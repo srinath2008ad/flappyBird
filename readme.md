@@ -64,3 +64,27 @@ Requirements:
 
 - Is the player too big or too small?
 - Is its initial position suitable for gameplay?
+
+# Stage 3 — Gravity: Let the player fall
+
+A player that stays in one position forever isn't very interesting.
+
+Now introduce gravity.
+
+Requirements:
+
+- The player should continuously move downwards.
+- The player should accelerate while falling.
+- The movement should be smooth.
+- The player should not fall indefinitely below the ground.
+  Your task:
+
+1. Introduce gravity into the game.
+2. Observe how the player's movement changes.
+3. Experiment with different gravity values.
+4. Make sure the player interacts properly with the ground.
+   Things to observe:
+
+- What happens when gravity is too high?
+- What happens when gravity is too low?
+- Does the player behave consistently at 60 FPS?

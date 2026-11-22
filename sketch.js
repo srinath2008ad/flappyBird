@@ -1,4 +1,5 @@
 const r = require("raylib");
+const b = require("./bird.js");
 
 function running() {
     return !r.WindowShouldClose();
@@ -18,24 +19,41 @@ function setup() {
         color: r.YELLOW
     }
 
-    return { bird };
+    const sky = {
+        x: 0,
+        y: 0,
+        width: 1200,
+        height: 700,
+        color: { r: 135, g: 206, b: 235, a: 255 }
+    }
 
+    const ground = {
+        x: 0,
+        y: 700,
+        width: 1200,
+        height: 100,
+        color: { r: 52, g: 140, b: 49, a: 255 }
+    }
+
+    const gravity = { x: 0, y: 0.2 * 60 * 60 };
+
+    return { sky, ground, bird, gravity };
 }
 
-function update() {
-    // change the state
+function update({ bird, gravity, ground }) {
+    const dt = r.GetFrameTime();
+
+    b.pullBird(bird, gravity, dt, ground);
 }
 
-function draw({ bird }) {
-    const skyColor = { r: 135, g: 206, b: 235, a: 255 };
-    const grassColor = { r: 52, g: 140, b: 49, a: 255 };
+function draw({ bird, sky, ground }) {
 
     r.BeginDrawing();
 
     r.ClearBackground(r.BLACK);
 
-    r.DrawRectangle(0, 0, 1200, 700, skyColor);//sky
-    r.DrawRectangle(0, 700, 1200, 100, grassColor)//ground
+    r.DrawRectangleRec(sky, sky.color);
+    r.DrawRectangleRec(ground, ground.color);
 
     r.DrawRectangleRec(bird, bird.color);
 
