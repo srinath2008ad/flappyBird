@@ -94,16 +94,46 @@ Requirements:
 Now give the player the ability to fly upwards.
 
 Requirements:
+
 - Pressing the SPACE key should make the player move upwards.
 - The player should be able to flap repeatedly.
 - The player should fall again after each flap.
 - The player should not fly outside the top of the window.
-Your task:
+  Your task:
+
 1. Introduce keyboard interaction.
 2. Give the player an upward movement.
 3. Experiment with the strength of each flap.
 4. Find a comfortable balance between gravity and flapping.
-Things to observe:
+   Things to observe:
+
 - Can you control the player's height?
 - Is the flap too strong?
 - Can you keep the player in the middle of the screen?
+
+# Stage 5 — Introducing obstacles
+
+It's time to introduce challenges!
+
+Create obstacles using rectangles.
+
+Each obstacle should consist of two rectangles with a gap between them.
+
+Requirements:
+
+- One obstacle should appear from the right side of the screen.
+- It should have an upper and lower rectangle.
+- There should be an empty gap between the two rectangles.
+- The player should be able to pass through this gap.
+  Your task:
+
+1. Create your first obstacle.
+2. Decide its width.
+3. Decide the size of the gap.
+4. Decide where the gap should appear vertically.
+5. Draw both rectangles.
+   Things to observe:
+
+- Is the gap large enough for the player?
+- Is the obstacle too wide?
+- Can the player comfortably pass through it?

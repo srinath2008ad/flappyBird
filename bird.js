@@ -41,32 +41,4 @@ module.exports = {
     pullBird,
     startFlying,
     flyBird
-}
-
-// const startJumping = function (dino) {
-
-//     if (dino.isJumping) return;
-
-//     dino.isJumping = true;
-
-//     dino.velocity.x += dino.initialVelocity.x;
-//     dino.velocity.y += dino.initialVelocity.y;
-// }
-
-// const jumpDino = function (dino, gravity, dt) {
-
-//     dino.x += dino.velocity.x * dt
-//     dino.y -= dino.velocity.y * dt;
-
-//     dino.velocity.x += gravity.x * dt;
-//     dino.velocity.y -= gravity.y * dt;
-
-// }
-
-// const updateDino = function (dino, gravity, dt) {
-//     jumpDino(dino, gravity, dt);
-
-//     if (hasDinoReachedGround(dino.y, dino.initialPosition)) {
-//         resetDino(dino);
-//     }
-// }
+}   
