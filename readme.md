@@ -88,3 +88,22 @@ Requirements:
 - What happens when gravity is too high?
 - What happens when gravity is too low?
 - Does the player behave consistently at 60 FPS?
+
+# Stage 4 — Flapping: Give the player control
+
+Now give the player the ability to fly upwards.
+
+Requirements:
+- Pressing the SPACE key should make the player move upwards.
+- The player should be able to flap repeatedly.
+- The player should fall again after each flap.
+- The player should not fly outside the top of the window.
+Your task:
+1. Introduce keyboard interaction.
+2. Give the player an upward movement.
+3. Experiment with the strength of each flap.
+4. Find a comfortable balance between gravity and flapping.
+Things to observe:
+- Can you control the player's height?
+- Is the flap too strong?
+- Can you keep the player in the middle of the screen?
