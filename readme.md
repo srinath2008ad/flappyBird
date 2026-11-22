@@ -41,3 +41,26 @@ Requirements:
 
 - Does the ground occupy too much screen space?
 - Is there enough room for obstacles?
+
+# Stage 2 — Introducing the player
+
+Now introduce the main character.
+
+For simplicity, represent the player using a rectangle.
+
+Requirements:
+
+- Create a player rectangle.
+- Give it a fixed width and height.
+- Position it somewhere towards the left side of the screen.
+- Keep its initial position above the ground.
+  Your task:
+
+1. Decide the player's dimensions.
+2. Decide its initial X and Y positions.
+3. Draw the player on the screen.
+4. Ensure it remains visible.
+   Things to observe:
+
+- Is the player too big or too small?
+- Is its initial position suitable for gameplay?
