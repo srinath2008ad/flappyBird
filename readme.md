@@ -137,3 +137,74 @@ Requirements:
 - Is the gap large enough for the player?
 - Is the obstacle too wide?
 - Can the player comfortably pass through it?
+
+# Stage 6 — Making obstacles move
+
+Stationary obstacles won't make an interesting game.
+
+Now make the obstacles move towards the player.
+
+Requirements:
+
+- Obstacles should move from right to left.
+- Their movement should be continuous.
+- They should eventually disappear beyond the left edge of the screen.
+  Your task:
+
+1. Introduce obstacle movement.
+2. Experiment with different movement speeds.
+3. Observe how the player interacts with moving obstacles.
+4. Make sure obstacle movement is consistent.
+   Things to observe:
+
+- What happens when obstacles move too quickly?
+- Is there enough time to react?
+- Does the game feel playable?
+
+# Stage 7 — Multiple obstacles
+
+One obstacle is not enough!
+
+Introduce multiple obstacles throughout the game.
+
+Requirements:
+
+- New obstacles should appear from the right side.
+- There should be a reasonable horizontal distance between obstacles.
+- Their vertical gaps should not always be at the same height.
+- Old obstacles should disappear after leaving the screen.
+  Your task:
+
+1. Introduce multiple obstacle pairs.
+2. Experiment with their spacing.
+3. Experiment with their vertical positions.
+4. Ensure the player has a reasonable opportunity to pass through each gap.
+   Things to observe:
+
+- Are the gaps too predictable?
+- Are some obstacles impossible to pass?
+- Does the game become too difficult?
+
+# Stage 8 — Collision detection
+
+Now introduce the possibility of losing.
+
+Requirements:
+
+The game should end when:
+
+- The player touches an upper obstacle.
+- The player touches a lower obstacle.
+- The player touches the ground.
+- The player goes outside the top boundary of the screen.
+  Your task:
+
+1. Identify all possible collision situations.
+2. Test each situation individually.
+3. Make sure collisions are detected correctly.
+4. Prevent the game from continuing after a collision.
+   Things to observe:
+
+- Does the game detect collisions too early?
+- Does it sometimes miss collisions?
+- Are all four losing conditions handled?

@@ -59,30 +59,39 @@ function setup() {
     const obstacleVelocity = 0.05 * 60 * 60;
     const gravity = { x: 0, y: 0.3 * 60 * 60 };
 
-    return { sky, ground, bird, gravity, obstacles, obstacleVelocity };
+    const isOut = false;
+
+    return { sky, ground, bird, gravity, obstacles, obstacleVelocity, isOut };
 }
 
 function isKeyPressed() {
     return r.IsKeyPressed(r.KEY_SPACE);
 }
 
-function update({ bird, gravity, ground, obstacles, obstacleVelocity }) {
+function update(world) {
+
+    if (world.isOut) {
+        return;
+    }
 
     const dt = r.GetFrameTime();
 
     if (isKeyPressed()) {
-        b.startFlying(bird);
+        b.startFlying(world.bird);
     }
 
-    b.flyBird(bird, gravity, dt);
-    b.pullBird(bird, gravity, dt, ground);
+    b.flyBird(world.bird, world.gravity, dt);
+    b.pullBird(world.bird, world.gravity, dt, world.ground);
 
-    o.moveObstacles(obstacles, obstacleVelocity, dt);
+    o.moveObstacles(world.obstacles, world.obstacleVelocity, dt);
+
+    world.isOut = b.checkCollision(world.bird, world.obstacles, world.ground.y)
 }
 
-function draw({ bird, sky, ground, obstacles }) {
+function draw({ bird, sky, ground, obstacles, isOut }) {
 
     r.BeginDrawing();
+
 
     r.ClearBackground(r.BLACK);
 
@@ -90,6 +99,10 @@ function draw({ bird, sky, ground, obstacles }) {
     r.DrawRectangleRec(ground, ground.color);
     r.DrawRectangleRec(bird, bird.color);
     o.drawObstacle(obstacles, ground.y);
+
+    if (isOut) {
+        r.DrawText("GameOver", 350, 100, 100, r.YELLOW)
+    }
 
     r.EndDrawing();
 }

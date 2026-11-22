@@ -37,8 +37,45 @@ const flyBird = function (bird, gravity, dt) {
     }
 }
 
+const isWithinRange = function (point, start, range) {
+    return (point > start) && (point < start + range);
+}
+
+const checkCollisionRecs = function (rec1, rec2, pillar2) {
+    const horizontalCollision = isWithinRange(rec1.x, rec2.x, rec2.width)
+        || isWithinRange(rec1.x + rec1.width, rec2.x, rec2.width);
+
+    const pillar1Collision = isWithinRange(rec1.y, rec2.y, rec2.height) ||
+        isWithinRange(rec1.y + rec1.height, rec2.y, rec2.height);
+
+    const pillar2Collision = isWithinRange(rec1.y, pillar2.y, pillar2.height) ||
+        isWithinRange(rec1.y + rec1.height, pillar2.y, pillar2.height);
+
+    const verticalCollison = pillar1Collision || pillar2Collision;
+
+    return horizontalCollision && verticalCollison;
+}
+
+const checkCollision = function (bird, obstacles, groundY) {
+    for (const obstacle of obstacles) {
+
+        const bottomPillar = {
+            x: obstacle.x,
+            y: obstacle.y + obstacle.height + obstacle.gap,
+            width: obstacle.width
+        }
+
+        bottomPillar.height = groundY - bottomPillar.y
+
+        if (checkCollisionRecs(bird, obstacle, bottomPillar)) {
+            return true;
+        }
+    }
+}
+
 module.exports = {
     pullBird,
     startFlying,
-    flyBird
+    flyBird,
+    checkCollision
 }   
