@@ -13,7 +13,7 @@ function setup() {
     r.SetTargetFPS(220);
 
     const bird = {
-        x: 100,
+        x: 200,
         y: 350,
         width: 40,
         height: 30,
@@ -47,7 +47,8 @@ function setup() {
             width: 100,
             height: 300,
             gap: 200,
-            color: r.RED
+            color: { r: 186, g: 140, b: 99, a: 255 },
+            birdCrossed: false
         }
     ]
 
@@ -59,9 +60,11 @@ function setup() {
     const obstacleVelocity = 0.05 * 60 * 60;
     const gravity = { x: 0, y: 0.3 * 60 * 60 };
 
+    const startFlying = false;
     const isOut = false;
+    const score = 0;
 
-    return { sky, ground, bird, gravity, obstacles, obstacleVelocity, isOut };
+    return { sky, ground, bird, gravity, obstacles, obstacleVelocity, isOut, startFlying, score };
 }
 
 function isKeyPressed() {
@@ -77,21 +80,28 @@ function update(world) {
     const dt = r.GetFrameTime();
 
     if (isKeyPressed()) {
+        world.startFlying = true;
         b.startFlying(world.bird);
     }
 
-    b.flyBird(world.bird, world.gravity, dt);
-    b.pullBird(world.bird, world.gravity, dt, world.ground);
+    if (world.startFlying) {
+        b.flyBird(world.bird, world.gravity, dt);
+        b.pullBird(world.bird, world.gravity, dt, world.ground);
+    }
 
     o.moveObstacles(world.obstacles, world.obstacleVelocity, dt);
 
     world.isOut = b.checkCollision(world.bird, world.obstacles, world.ground.y)
+        || b.hasTouchedGround(world.bird, world.ground.y);
+
+    if (b.hasCrossedPillar(world.bird, world.obstacles[0])) {
+        world.score++;
+    }
 }
 
-function draw({ bird, sky, ground, obstacles, isOut }) {
+function draw({ bird, sky, ground, obstacles, isOut, score }) {
 
     r.BeginDrawing();
-
 
     r.ClearBackground(r.BLACK);
 
@@ -99,9 +109,10 @@ function draw({ bird, sky, ground, obstacles, isOut }) {
     r.DrawRectangleRec(ground, ground.color);
     r.DrawRectangleRec(bird, bird.color);
     o.drawObstacle(obstacles, ground.y);
+    r.DrawText(`SCORE ${score}`, 500, 20, 30, r.DARKBROWN)
 
     if (isOut) {
-        r.DrawText("GameOver", 350, 100, 100, r.YELLOW)
+        r.DrawText("GameOver", 350, 150, 100, r.YELLOW)
     }
 
     r.EndDrawing();

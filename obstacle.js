@@ -8,7 +8,8 @@ const getRandomObstacle = function (lastObstacle, obstacleGap) {
         width: 100,
         height: g.getRandom(200, 500),
         gap: 200,
-        color: r.RED
+        color: { r: 186, g: 140, b: 99, a: 255 },
+        birdCrossed: false
     }
 
     return obstacle;
@@ -23,8 +24,12 @@ const drawObstacle = function (obstacles, groundY) {
         }
         bottom.height = groundY - bottom.y
 
-        r.DrawRectangleRec(obstacle, obstacle.color);
-        r.DrawRectangleRec(bottom, obstacle.color);
+        r.DrawRectangleRounded(obstacle, 0.2, 10, obstacle.color)
+        r.DrawRectangleRounded(bottom, 0.2, 10, obstacle.color)
+
+        const woodColor = { r: 126, g: 72, b: 51, a: 255 };
+        r.DrawRectangleRoundedLines(obstacle, 0.2, 10, 3, woodColor)
+        r.DrawRectangleRoundedLines(bottom, 0.2, 10, 3, woodColor)
     }
 }
 
@@ -38,6 +43,8 @@ const moveObstacles = function (obstacles, velocity, dt) {
         }
     }
 }
+
+
 
 module.exports = {
     drawObstacle,

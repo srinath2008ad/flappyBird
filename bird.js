@@ -73,9 +73,23 @@ const checkCollision = function (bird, obstacles, groundY) {
     }
 }
 
+const hasTouchedGround = function (bird, groundY) {
+    return (bird.y + bird.height) > groundY
+}
+
+const hasCrossedPillar = function (bird, obstacle) {
+    if (!obstacle.birdCrossed && bird.x > obstacle.x + obstacle.width) {
+        obstacle.birdCrossed = true;
+        return true;
+    }
+    return false;
+}
+
 module.exports = {
     pullBird,
     startFlying,
     flyBird,
-    checkCollision
+    checkCollision,
+    hasTouchedGround,
+    hasCrossedPillar
 }   
