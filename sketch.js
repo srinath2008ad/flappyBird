@@ -87,10 +87,9 @@ function draw({ bird, sky, ground, obstacles }) {
     r.ClearBackground(r.BLACK);
 
     r.DrawRectangleGradientV(sky.x, sky.y, sky.width, sky.height, sky.color, r.WHITE);
-    o.drawObstacle(obstacles)
     r.DrawRectangleRec(ground, ground.color);
     r.DrawRectangleRec(bird, bird.color);
-
+    o.drawObstacle(obstacles, ground.y);
 
     r.EndDrawing();
 }

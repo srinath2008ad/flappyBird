@@ -14,14 +14,14 @@ const getRandomObstacle = function (lastObstacle, obstacleGap) {
     return obstacle;
 }
 
-const drawObstacle = function (obstacles) {
+const drawObstacle = function (obstacles, groundY) {
     for (const obstacle of obstacles) {
         const bottom = {
             x: obstacle.x,
             y: obstacle.y + obstacle.height + obstacle.gap,
-            height: obstacle.height,
             width: obstacle.width
         }
+        bottom.height = groundY - bottom.y
 
         r.DrawRectangleRec(obstacle, obstacle.color);
         r.DrawRectangleRec(bottom, obstacle.color);
